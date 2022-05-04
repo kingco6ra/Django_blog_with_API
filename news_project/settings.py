@@ -159,7 +159,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-
+#
 # ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
