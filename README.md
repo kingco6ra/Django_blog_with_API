@@ -20,3 +20,6 @@
 
 ![изображение](https://user-images.githubusercontent.com/101705791/166694828-28a8bbf8-24fa-415f-8c55-318b5e7e530a.png)
 
+
+## Heroku deploy - https://django-newsblog.herokuapp.com/ 
+
