@@ -1,0 +1,11 @@
+#header, .module caption, .inline-group h2, div.breadcrumbs{
+    background-color: #0c4128;
+}
+
+#nav-sidebar .current-model {
+    background-color: rgba(19, 102, 62, 0.86);
+}
+
+a:link, a:visited {
+    color: #03b30b
+}

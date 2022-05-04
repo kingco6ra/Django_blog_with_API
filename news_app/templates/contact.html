@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+    Обратная связь
+{% endblock %}
+
+{% block content %}
+
+
+    <h1 class="text-center mb-5">Обратная связь</h1>
+    <form class="col-lg-6 offset-lg-3" action="{% url 'contact' %}" method="post">
+        <div class="row justify-content-center">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="col-lg-6 btn btn-primary mt-3 js-captcha-refresh">Отправить</button>
+        </div>
+    </form>
+
+
+{% endblock %}

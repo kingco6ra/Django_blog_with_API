@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ news_item.title }}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'inc/_sidebar.html' %}
+{% endblock %}
+{% block content %}
+    <div class="col-md-9">
+        <div class="card mb-3">
+            <div class="card-header">
+                {% if news_item.photo %}
+                    <img src="{{ news_item.photo.url }}" class="image-header" width="500" height="350" alt="">
+                {% else %}
+                    <img src="https://picsum.photos/id/1060/500/350?blur=2" alt="" class="image-header">
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <div class="media d-flex">
+                    <div class="media-body">
+                        <h5>{{ news_item.title }} <a class="text-decoration-none text-muted" href="{{ news_item.category.get_absolute_url }}">{{ news_item.category }}</a></h5>
+                        <p>{{ news_item.content|safe }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                {{ news_item.created_at|date:"H:i d F Y " }}
+            </div>
+        </div>
+        <div class="comment">
+            {% for comment in comments %}
+                <div class="card mb-3" style="background: rgba(143,143,143,0.16)">
+                    <div class="card-header">
+                        {% if comment.author %}{{ comment.author }} {% else %}Аноним {% endif %}в {{ comment.created_at|date:"H:i" }}
+                        <p class="float-end">{{ comment.created_at|date:"d E Y" }}</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ comment.content }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <form action="" method="post" class="offset-lg-0">
+                <div class="row justify-content-center">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary mt-3 align-self-center col-lg-5 ">Добавить комментарий</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

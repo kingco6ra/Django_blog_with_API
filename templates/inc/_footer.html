@@ -1,0 +1,22 @@
+{% load static %}
+
+<footer class="mt-4 pt-4 text-muted text-center text-small">
+    <div class="opacity-75">
+    <p class="mb-1">© 2022 Осипов Максим Сергеевич</p>
+    <p class="mb-1">Сайт сделан на основе <a href="https://www.djangoproject.com/" class="text-decoration-none">Django</a> и
+        <a href="https://getbootstrap.com/" class="text-decoration-none">Bootstrap</a></p>
+    <a href="{% url 'contact' %}" class="text-decoration-none text-black"><p>Оставить отзыв</p></a>
+    </div>
+    <ul class="list-inline mt-3 ul-footer">
+        <li class="list-inline-item">
+            <a href="https://t.me/kingco6ra">
+                <img src="{% static 'img/telegram.png' %}" height="46" width="46" alt="">
+            </a>
+        </li>
+        <li class="list-inline-item">
+            <a href="https://github.com/kingco6ra">
+                <img src="{% static 'img/github.png' %}" height="46" width="46" alt="">
+            </a>
+        </li>
+    </ul>
+</footer>

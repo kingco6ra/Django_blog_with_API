@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    Регистрация
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mb-5">Регистрация</h1>
+    <form class="col-lg-4 offset-lg-4" action="{%  url 'register' %}" method="post">
+        <div class="row justify-content-center">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="col-lg-6 btn btn-primary mt-3 justify-content-xxl-center">Регистрация</button>
+        </div>
+    </form>
+{% endblock %}
