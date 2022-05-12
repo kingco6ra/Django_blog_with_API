@@ -4,9 +4,11 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
+from rest_framework.viewsets import ModelViewSet
 
 from .forms import *
 from .models import *
+from .serializers import NewsSerializer
 
 
 class HomeNews(ListView):
@@ -94,3 +96,9 @@ def contact(request):
     else:
         form = ContactEmailForm()
     return render(request, 'contact.html', {'form': form})
+
+
+# API
+class NewsViewSet(ModelViewSet):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
