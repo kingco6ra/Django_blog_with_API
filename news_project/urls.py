@@ -17,6 +17,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+
+from news_app.views import NewsViewSet
+
+router = routers.SimpleRouter()
+router.register(r'news', NewsViewSet)
 
 
 urlpatterns = [
@@ -26,6 +32,7 @@ urlpatterns = [
     path('', include('news_app.urls')),  # подключает urls.py из news_app
     path('', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
+    path('api/', include(router.urls))
 ]
 
 if settings.DEBUG:
