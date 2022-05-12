@@ -26,6 +26,7 @@
             </div>
             <div class="card-footer text-muted">
                 {{ news_item.created_at|date:"H:i d F Y " }}
+                <p class="float-end">Автор: {{ news_item.author }}</p>
             </div>
         </div>
         <div class="comment">
