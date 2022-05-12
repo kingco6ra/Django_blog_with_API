@@ -6,6 +6,7 @@ from django.urls import reverse
 class News(models.Model):
     # атрибуты класса
     title = models.CharField(max_length=150, verbose_name='Заголовок')
+    author = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default='admin')
     preview_content = models.TextField(max_length=1000, verbose_name='Тизер')
     content = models.TextField(verbose_name='Контент')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
