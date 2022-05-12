@@ -17,7 +17,7 @@ class NewsAdminForm(forms.ModelForm):
 class NewsAdmin(admin.ModelAdmin):
     form = NewsAdminForm
     list_display = (
-        'id', 'title', 'views', 'category',  # отображаемые поля в админке
+        'id', 'title', 'category',  # отображаемые поля в админке
         'created_at', 'is_published', 'get_photo')
     list_display_links = ('id', 'title')  # кликабельные поля
     search_fields = ('title', 'content')  # поля по которым можно осуществлять поиск
@@ -26,9 +26,9 @@ class NewsAdmin(admin.ModelAdmin):
     fields = (
         'title', 'category', 'content', 'preview_content',
         'photo', 'get_photo', 'created_at',
-        'updated_at', 'views', 'is_published',
+        'updated_at', 'is_published',
     )
-    readonly_fields = ('get_photo', 'created_at', 'updated_at', 'views')
+    readonly_fields = ('get_photo', 'created_at', 'updated_at')
     save_on_top = True
 
     # добавляет миниатюру фотографии в админке
