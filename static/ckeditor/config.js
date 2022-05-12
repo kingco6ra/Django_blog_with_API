@@ -26,7 +26,7 @@ CKEDITOR.editorConfig = function( config )
 
 
     config.width = 800,
-    config.skin = 'light'
+    config.skin = 'office2003'
 
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';

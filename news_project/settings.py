@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-^4(a@+$5jx!9qg_a7-8cjux3tjng!9x*vg2%s(!5rmxz_svy_7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -144,7 +144,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_APP_DIR = 'static'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'news_project/static')]
 
 MEDIA_URL = '/media/'
