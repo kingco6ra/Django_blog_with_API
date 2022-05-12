@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'whitenoise.runserver_nostatic',
-    'captcha'
+    'captcha',
+    'rest_framework'
 
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
