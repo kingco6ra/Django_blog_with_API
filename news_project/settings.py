@@ -48,7 +48,9 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'whitenoise.runserver_nostatic',
     'captcha',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',
 
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
