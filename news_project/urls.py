@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework import routers
 
 from news_app.views import NewsViewSet, CommentsViewSet
@@ -33,7 +33,9 @@ urlpatterns = [
     path('', include('news_app.urls')),  # подключает urls.py из news_app
     path('', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('auth/', include('djoser.urls')),
+    re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
 
 if settings.DEBUG:
