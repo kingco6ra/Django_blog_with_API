@@ -34,7 +34,8 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
     path('api/', include(router.urls)),
-    path('auth/', include('djoser.urls')),
+    path('api/drf-auth', include('rest_framework.urls')),
+    path('api/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
 
