@@ -238,12 +238,12 @@ CKEDITOR_CONFIGS = {
 }
 
 # отправка email
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+# EMAIL_HOST = 'smtp.yandex.ru'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = False
+# EMAIL_USE_SSL = True
 
 CAPTCHA_IMAGE_SIZE = (150, 50)
 CAPTCHA_FONT_SIZE = 34
@@ -256,3 +256,4 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR, 'django_cache'),
     }
 }
+
