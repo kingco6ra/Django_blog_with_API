@@ -44,3 +44,8 @@ class Login(SuccessMessageMixin, LoginView):
 class Logout(LogoutView):
     next_page = 'home'
 
+
+class ProfileView(DetailView):
+    model = User
+    template_name = 'profile.html'
+

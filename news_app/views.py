@@ -9,7 +9,7 @@ from rest_framework.viewsets import ModelViewSet
 from .forms import *
 from .models import *
 from .serializers import NewsSerializer
-
+from .permissions import IsAdminOrReadOnly
 
 class HomeNews(ListView):
     model = News
@@ -102,3 +102,4 @@ def contact(request):
 class NewsViewSet(ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
+    permission_classes = (IsAdminOrReadOnly,)
