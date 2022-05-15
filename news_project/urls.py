@@ -19,10 +19,11 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
-from news_app.views import NewsViewSet
+from news_app.views import NewsViewSet, CommentsViewSet
 
 router = routers.SimpleRouter()
 router.register(r'news', NewsViewSet)
+router.register(r'comments', CommentsViewSet)
 
 
 urlpatterns = [
