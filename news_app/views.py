@@ -116,4 +116,4 @@ class NewsViewSet(ModelViewSet):
 class CommentsViewSet(ModelViewSet):
     queryset = Comments.objects.all()
     serializer_class = CommentsSerializer
-    permission_classes = (IsAdminOrReadOnly,)
+    permission_classes = (IsOwnerOrReadOnly,)
