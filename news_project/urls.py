@@ -25,7 +25,7 @@ from news_app.views import NewsViewSet, CommentsViewSet, UserViewSet, CategoryVi
 router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet)
 router.register(r'comments', CommentsViewSet)
-router.register(r'users', UserViewSet)
+router.register(r'cheloboti', UserViewSet)
 router.register(r'categories', CategoryViewSet)
 # END API
 
@@ -33,7 +33,8 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('__debug__/', include('debug_toolbar.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('', include('news_app.urls')),  # подключает urls.py из news_app
+    # Apps
+    path('', include('news_app.urls')),
     path('', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
     # API

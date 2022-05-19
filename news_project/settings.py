@@ -236,13 +236,13 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-# отправка email
-# EMAIL_HOST = 'smtp.yandex.ru'
-# EMAIL_PORT = 465
-# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-# EMAIL_USE_TLS = False
-# EMAIL_USE_SSL = True
+# отправка email, без этой настройки не будет работать форма обратной связи
+# EMAIL_HOST =
+# EMAIL_PORT =
+# EMAIL_HOST_USER =
+# EMAIL_HOST_PASSWORD =
+# EMAIL_USE_TLS =
+# EMAIL_USE_SSL =
 
 CAPTCHA_IMAGE_SIZE = (150, 50)
 CAPTCHA_FONT_SIZE = 34
