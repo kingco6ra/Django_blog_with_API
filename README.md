@@ -3,28 +3,29 @@
 - Django Rest Framework
 
 ### API Endpoints:
-|URL|METHOD|PERMISSIONS|
-|:--|:----:|      ---: |
-|api/|GET|**API root.**|
-|||
-|api/news/|GET|**All users are allowed, including those who are not authorized.**|
-|api/news/|POST|**Only authorized users are allowed.**|
-|api/news/i/|PUT|**Editing is allowed only to the author of the post.**|
-|||
-|api/comments/|GET|**All users are allowed, including those who are not authorized.**|
-|api/comments/|POST|**All users are allowed, including those who are not authorized.**|
-|api/comments/i/|PUT|**Editing is allowed only to the author of the comment.**|
-|||
-|api/users/|GET|**Access is allowed only for the administrator.**|
-|api/users/|POST|**Access is allowed only for the administrator.**|
-|api/users/i/|PUT|**Access is allowed only for the administrator.**|
-|||
-|api/categories/|GET|**All users are allowed, including those who are not authorized.**|
-|api/categories/|POST|**Only the administrator is allowed.**|
-|api/categories/i/|PUT|**Only the administrator is allowed.**|
-|||
-|api/authlogin/ AND api/authlogout/|GET and POST|**For all users.**|
 
+
+| URL                                |    METHOD    |                                                        PERMISSIONS |
+| :----------------------------------- | :------------: | -------------------------------------------------------------------: |
+| api/                               |     GET     |                                                      **API root.** |
+|                                    |              |                                                                    |
+| api/news/                          |     GET     | **All users are allowed, including those who are not authorized.** |
+| api/news/                          |     POST     |                             **Only authorized users are allowed.** |
+| api/news/i/                        |     PUT     |             **Editing is allowed only to the author of the post.** |
+|                                    |              |                                                                    |
+| api/comments/                      |     GET     | **All users are allowed, including those who are not authorized.** |
+| api/comments/                      |     POST     | **All users are allowed, including those who are not authorized.** |
+| api/comments/i/                    |     PUT     |          **Editing is allowed only to the author of the comment.** |
+|                                    |              |                                                                    |
+| api/users/                         |     GET     |                  **Access is allowed only for the administrator.** |
+| api/users/                         |     POST     |                  **Access is allowed only for the administrator.** |
+| api/users/i/                       |     PUT     |                  **Access is allowed only for the administrator.** |
+|                                    |              |                                                                    |
+| api/categories/                    |     GET     | **All users are allowed, including those who are not authorized.** |
+| api/categories/                    |     POST     |                             **Only the administrator is allowed.** |
+| api/categories/i/                  |     PUT     |                             **Only the administrator is allowed.** |
+|                                    |              |                                                                    |
+| api/authlogin/ AND api/authlogout/ | GET and POST |                                                 **For all users.** |
 
 ### Authorization / Registration
 
@@ -43,6 +44,3 @@
 ### CKEditor
 
 ![изображение](https://user-images.githubusercontent.com/101705791/166694828-28a8bbf8-24fa-415f-8c55-318b5e7e530a.png)
-
-
-
