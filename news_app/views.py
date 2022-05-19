@@ -4,12 +4,16 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.reverse import reverse
 
 from .forms import *
 from .models import *
 from .serializers import NewsSerializer, CommentsSerializer
 from .permissions import IsAdminOrReadOnly
+
 
 class HomeNews(ListView):
     model = News
@@ -99,6 +103,15 @@ def contact(request):
 
 
 # API
+class APIRootView(APIView):
+    def get(self, request):
+        return Response({
+            'users': reverse('user-list'),
+            'news': reverse('news-list'),
+            'comments': reverse('comments-list'),
+        })
+
+
 class NewsViewSet(ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer

@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework import routers
 
-from news_app.views import NewsViewSet, CommentsViewSet
+from news_app.views import NewsViewSet, CommentsViewSet, APIRootView
 
 router = routers.SimpleRouter()
 router.register(r'news', NewsViewSet)
@@ -34,6 +34,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
     path('api/', include(router.urls)),
+    path('api/root/', APIRootView.as_view()),
     path('api/drf-auth', include('rest_framework.urls')),
     path('api/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
