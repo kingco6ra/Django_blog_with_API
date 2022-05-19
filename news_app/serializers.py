@@ -16,6 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    news_category = serializers.HyperlinkedRelatedField(many=True, view_name='news-detail', read_only=True)
 
     class Meta:
         model = Category
@@ -24,6 +25,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class NewsSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
+    category = serializers.HyperlinkedRelatedField(view_name='category-detail', read_only=True)
     created_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
     updated_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
     news_comments = serializers.HyperlinkedRelatedField(many=True, view_name='comments-detail', read_only=True)
