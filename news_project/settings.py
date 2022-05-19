@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'captcha',
     'rest_framework',
     'rest_framework.authtoken',
-    'djoser',
 
 ]
 X_FRAME_OPTIONS = 'SAMEORIGIN'
