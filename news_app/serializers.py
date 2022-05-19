@@ -23,7 +23,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class NewsSerializer(serializers.ModelSerializer):
-    author = serializers.ReadOnlyField(source='author.username')
+    author = serializers.HyperlinkedRelatedField(view_name='user-detail', read_only=True)
     category = serializers.HyperlinkedRelatedField(view_name='category-detail', queryset=Category.objects.all())
     created_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
     updated_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
