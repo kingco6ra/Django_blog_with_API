@@ -19,11 +19,13 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from rest_framework import routers
 
-from news_app.views import NewsViewSet, CommentsViewSet, APIRootView
+from news_app.views import NewsViewSet, CommentsViewSet, UserViewSet, CategoryViewSet
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet)
 router.register(r'comments', CommentsViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'categories', CategoryViewSet)
 
 
 urlpatterns = [
@@ -33,13 +35,10 @@ urlpatterns = [
     path('', include('news_app.urls')),  # подключает urls.py из news_app
     path('', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
-    path('api/', include(router.urls)),
-    path('api/root/', APIRootView.as_view()),
-    path('api/drf-auth', include('rest_framework.urls')),
-    path('api/auth/', include('djoser.urls')),
-    re_path(r'^auth/', include('djoser.urls.authtoken')),
-]
 
+    path('api/', include(router.urls)),
+    path('api/auth', include('rest_framework.urls')),
+]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
