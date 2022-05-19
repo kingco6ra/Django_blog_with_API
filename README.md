@@ -1,6 +1,16 @@
+# Installation Guide
+#### 1. Open your console (I use Powershell) and clone the repository:
+`git clone https://github.com/kingco6ra/news_blog.git`
+#### 2. Go to the project folder:
+`cd .\news_blog\`
+#### 3. Launch docker-compose:
+`docker-compose up`
+
+---
 - Python
 - Django
 - Django Rest Framework
+- Docker
 
 ### API Endpoints:
 
