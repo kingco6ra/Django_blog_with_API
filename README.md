@@ -9,6 +9,11 @@
 `127.0.0.1:8000/`
 #### Done. The API routes will be described below.
 
+## To access the admin panel:
+Login: **admin** <br>
+Password: **admin**
+
+
 ---
 - Python
 - Django
@@ -24,19 +29,19 @@
 |                                    |              |                                                                    |
 | api/news/                          |     GET     | **All users are allowed, including those who are not authorized.** |
 | api/news/                          |     POST     |                             **Only authorized users are allowed.** |
-| api/news/i/                        |     PUT     |             **Editing is allowed only to the author of the post.** |
+| api/news/`id`/                        |     PUT     |             **Editing is allowed only to the author of the post.** |
 |                                    |              |                                                                    |
 | api/comments/                      |     GET     | **All users are allowed, including those who are not authorized.** |
 | api/comments/                      |     POST     | **All users are allowed, including those who are not authorized.** |
-| api/comments/i/                    |     PUT     |          **Editing is allowed only to the author of the comment.** |
+| api/comments/`id`/                    |     PUT     |          **Editing is allowed only to the author of the comment.** |
 |                                    |              |                                                                    |
 | api/users/                         |     GET     |                  **Access is allowed only for the administrator.** |
 | api/users/                         |     POST     |                  **Access is allowed only for the administrator.** |
-| api/users/i/                       |     PUT     |                  **Access is allowed only for the administrator.** |
+| api/users/`id`/                       |     PUT     |                  **Access is allowed only for the administrator.** |
 |                                    |              |                                                                    |
 | api/categories/                    |     GET     | **All users are allowed, including those who are not authorized.** |
 | api/categories/                    |     POST     |                             **Only the administrator is allowed.** |
-| api/categories/i/                  |     PUT     |                             **Only the administrator is allowed.** |
+| api/categories/`id`/                  |     PUT     |                             **Only the administrator is allowed.** |
 |                                    |              |                                                                    |
 | api/authlogin/ AND api/authlogout/ | GET and POST |                                                 **For all users.** |
 
