@@ -1,4 +1,4 @@
-from djoser.conf import User
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from .models import News, Comments, Category
@@ -6,9 +6,8 @@ from .models import News, Comments, Category
 
 class UserSerializer(serializers.ModelSerializer):
     date_joined = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
-    author_news = serializers.HyperlinkedRelatedField(many=True, view_name='news-detail', queryset=News.objects.all())
-    author_comments = serializers.HyperlinkedRelatedField(many=True, view_name='comments-detail',
-                                                          queryset=Comments.objects.all())
+    author_news = serializers.HyperlinkedRelatedField(many=True, view_name='news-detail', read_only=True)
+    author_comments = serializers.HyperlinkedRelatedField(many=True, view_name='comments-detail', read_only=True)
 
     class Meta:
         model = User
@@ -25,7 +24,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class NewsSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
-    category = serializers.HyperlinkedRelatedField(view_name='category-detail', read_only=True)
+    category = serializers.HyperlinkedRelatedField(view_name='category-detail', queryset=Category.objects.all())
     created_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
     updated_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
     news_comments = serializers.HyperlinkedRelatedField(many=True, view_name='comments-detail', read_only=True)
