@@ -11,7 +11,7 @@ from rest_framework.reverse import reverse
 
 from .forms import *
 from .models import *
-from .serializers import NewsSerializer, CommentsSerializer
+from .serializers import NewsSerializer, CommentsSerializer, UserSerializer, CategorySerializer
 from .permissions import IsAdminOrReadOnly
 
 
@@ -103,13 +103,18 @@ def contact(request):
 
 
 # API
-class APIRootView(APIView):
-    def get(self, request):
-        return Response({
-            'users': reverse('user-list'),
-            'news': reverse('news-list'),
-            'comments': reverse('comments-list'),
-        })
+
+
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (IsAdminOrReadOnly,)
+
+
+class CategoryViewSet(ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = (IsAdminOrReadOnly,)
 
 
 class NewsViewSet(ModelViewSet):
