@@ -1,9 +1,8 @@
 import re
 
-from ckeditor.widgets import CKEditorWidget
+from captcha.fields import CaptchaField, CaptchaTextInput
 from django import forms
 from django.core.exceptions import ValidationError
-from captcha.fields import CaptchaField, CaptchaTextInput
 
 from .models import *
 

@@ -16,17 +16,18 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include
 from rest_framework import routers
 
 from news_app.views import NewsViewSet, CommentsViewSet, UserViewSet, CategoryViewSet
 
+# API
 router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet)
 router.register(r'comments', CommentsViewSet)
 router.register(r'users', UserViewSet)
 router.register(r'categories', CategoryViewSet)
-
+# END API
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -35,7 +36,7 @@ urlpatterns = [
     path('', include('news_app.urls')),  # подключает urls.py из news_app
     path('', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
-
+    # API
     path('api/', include(router.urls)),
     path('api/auth', include('rest_framework.urls')),
 ]

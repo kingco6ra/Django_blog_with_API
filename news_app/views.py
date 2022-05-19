@@ -4,15 +4,12 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.reverse import reverse
 
 from .forms import *
 from .models import *
-from .serializers import NewsSerializer, CommentsSerializer, UserSerializer, CategorySerializer
 from .permissions import IsAdminOrReadOnly
+from .serializers import NewsSerializer, CommentsSerializer, UserSerializer, CategorySerializer
 
 
 class HomeNews(ListView):
