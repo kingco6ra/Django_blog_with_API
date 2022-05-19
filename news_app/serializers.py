@@ -1,11 +1,32 @@
+from djoser.conf import User
 from rest_framework import serializers
 
-from .models import News, Comments
+from .models import News, Comments, Category
+
+
+class UserSerializer(serializers.ModelSerializer):
+    date_joined = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
+    author_news = serializers.HyperlinkedRelatedField(many=True, view_name='news-detail', queryset=News.objects.all())
+    author_comments = serializers.HyperlinkedRelatedField(many=True, view_name='comments-detail',
+                                                          queryset=Comments.objects.all())
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'date_joined', 'author_news', 'author_comments')
+
+
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = '__all__'
 
 
 class NewsSerializer(serializers.ModelSerializer):
     author = serializers.ReadOnlyField(source='author.username')
     created_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
+    updated_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
+    news_comments = serializers.HyperlinkedRelatedField(many=True, view_name='comments-detail', read_only=True)
 
     class Meta:
         model = News
