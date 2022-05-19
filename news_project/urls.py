@@ -39,7 +39,7 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     # API
     path('api/', include(router.urls)),
-    path('api/auth', include('rest_framework.urls')),
+    path('api/auth/', include('rest_framework.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
