@@ -8,7 +8,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from .forms import *
 from .models import *
-from .permissions import IsAdminOrReadOnly
+from .permissions import IsAdminOrReadOnly, IsAdminUser, IsOwnerOrReadOnly
 from .serializers import NewsSerializer, CommentsSerializer, UserSerializer, CategorySerializer
 
 
@@ -27,7 +27,7 @@ class HomeNews(ListView):
 
     def get_queryset(self):
         # select_related() - оптимизирует количество SQL запросов, убирая дубликаты запросов
-        return News.objects.filter(is_published=True).order_by('-created_at').select_related('category')
+        return News.objects.filter(is_published=True).order_by('-created_at').select_related('category', 'author')
 
 
 class NewsByCategory(ListView):
@@ -43,7 +43,8 @@ class NewsByCategory(ListView):
         return context
 
     def get_queryset(self):
-        return News.objects.filter(category_id=self.kwargs['category_id'], is_published=True).select_related('category')
+        return News.objects.filter(
+            category_id=self.kwargs['category_id'], is_published=True).select_related('category', 'author')
 
 
 class ViewNews(DetailView, CreateView):
@@ -100,12 +101,10 @@ def contact(request):
 
 
 # API
-
-
 class UserViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsAdminOrReadOnly,)
+    permission_classes = (IsAdminUser,)
 
 
 class CategoryViewSet(ModelViewSet):
@@ -117,7 +116,7 @@ class CategoryViewSet(ModelViewSet):
 class NewsViewSet(ModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
-    permission_classes = (IsAdminOrReadOnly,)
+    permission_classes = (IsOwnerOrReadOnly,)
 
 
 class CommentsViewSet(ModelViewSet):
