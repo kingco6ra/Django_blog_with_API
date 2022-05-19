@@ -13,7 +13,9 @@ class News(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, verbose_name='Фото')
     is_published = models.BooleanField(default=True, verbose_name='Статус публикации')
-    category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name='Категория')
+    category = models.ForeignKey(
+        'Category', on_delete=models.PROTECT, verbose_name='Категория', related_name='news_category'
+    )
     # кавычки нужны для того, чтобы завербовать имя отношения.
     # если бы модель Category была объявлена раньше этой
     # модели, то ковычки можно было опустить
