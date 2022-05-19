@@ -25,7 +25,7 @@ from news_app.views import NewsViewSet, CommentsViewSet, UserViewSet, CategoryVi
 router = routers.DefaultRouter()
 router.register(r'news', NewsViewSet)
 router.register(r'comments', CommentsViewSet)
-router.register(r'cheloboti', UserViewSet)
+router.register(r'users', UserViewSet)
 router.register(r'categories', CategoryViewSet)
 # END API
 
