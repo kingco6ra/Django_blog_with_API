@@ -43,7 +43,7 @@ Password: **admin**
 | api/categories/                    |     POST     |                             **Only the administrator is allowed.** |
 | api/categories/`id`/                  |     PUT     |                             **Only the administrator is allowed.** |
 |                                    |              |                                                                    |
-| api/authlogin/ AND api/authlogout/ | GET and POST |                                                 **For all users.** |
+| api/authlogin/ `AND` api/authlogout/ | GET `and` POST |                                                 **For all users.** |
 
 ### Authorization / Registration
 
