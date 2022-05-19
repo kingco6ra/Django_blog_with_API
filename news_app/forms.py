@@ -9,8 +9,7 @@ from .models import *
 
 class NewsForm(forms.ModelForm):
     class Meta:
-        model = News  # определяет с какой моделью связана форма
-        # fields = '__all__'
+        model = News
         fields = ['title', 'category', 'preview_content', 'content', 'photo', 'is_published']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -20,7 +19,6 @@ class NewsForm(forms.ModelForm):
             'photo': forms.FileInput(attrs={'name': 'upload'})
         }
 
-    # кастомный валидатор
     def clean_title(self):
         title = self.cleaned_data['title']
         if re.match(r'\d', title):

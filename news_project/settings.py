@@ -235,7 +235,7 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-# отправка email, без этой настройки не будет работать форма обратной связи
+# for the feedback form to work
 # EMAIL_HOST =
 # EMAIL_PORT =
 # EMAIL_HOST_USER =

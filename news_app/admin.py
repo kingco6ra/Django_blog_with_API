@@ -17,11 +17,11 @@ class NewsAdminForm(forms.ModelForm):
 class NewsAdmin(admin.ModelAdmin):
     form = NewsAdminForm
     list_display = (
-        'id', 'title', 'category', 'author',  # отображаемые поля в админке
+        'id', 'title', 'category', 'author',
         'created_at', 'is_published', 'get_photo')
-    list_display_links = ('id', 'title')  # кликабельные поля
-    search_fields = ('title', 'content')  # поля по которым можно осуществлять поиск
-    list_editable = ('is_published',)  # редактирование в корне новостей
+    list_display_links = ('id', 'title')
+    search_fields = ('title', 'content')
+    list_editable = ('is_published',)
     list_filter = ('is_published', 'category')
     fields = (
         'title', 'author', 'category', 'content', 'preview_content',
@@ -31,16 +31,15 @@ class NewsAdmin(admin.ModelAdmin):
     readonly_fields = ('get_photo', 'created_at', 'updated_at')
     save_on_top = True
 
-    # добавляет миниатюру фотографии в админке
     def get_photo(self, obj):
         if obj.photo:
             return mark_safe(f'<img src="{obj.photo.url}" width="55px">')
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')  # отображаемые поля в админке
-    list_display_links = ('id', 'title')  # кликабельные поля
-    search_fields = ('title',)  # поля по которым можно осуществлять поиск
+    list_display = ('id', 'title')
+    list_display_links = ('id', 'title')
+    search_fields = ('title',)
 
 
 class CommentsAdmin(admin.ModelAdmin):
@@ -51,7 +50,6 @@ class CommentsAdmin(admin.ModelAdmin):
     list_filter = ('author', 'created_at')
 
 
-# образование связи между админкой и моделью
 admin.site.register(News, NewsAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Comments, CommentsAdmin)

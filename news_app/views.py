@@ -18,15 +18,12 @@ class HomeNews(ListView):
     context_object_name = 'news'
     paginate_by = 5
 
-    # queryset = News.objects.select_related('category')
-
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(HomeNews, self).get_context_data(**kwargs)
         context['title'] = 'Главная страница'
         return context
 
     def get_queryset(self):
-        # select_related() - оптимизирует количество SQL запросов, убирая дубликаты запросов
         return News.objects.filter(is_published=True).order_by('-created_at').select_related('category', 'author')
 
 
@@ -34,7 +31,7 @@ class NewsByCategory(ListView):
     model = News
     template_name = 'index.html'
     context_object_name = 'news'
-    allow_empty = False  # если пользователь обратится к несуществующему id, то поднимется 404 ошибка
+    allow_empty = False
     paginate_by = 5
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -57,7 +54,7 @@ class ViewNews(DetailView, CreateView):
         news_id = self.kwargs['pk']
         return reverse_lazy('view_news', kwargs={'pk': news_id})
 
-    # в скрытые поля присваивается id новости и id автора комментария
+    # the news id and the comment author id are entered in the hidden fields
     def get_initial(self, **kwargs):
         initial = super(ViewNews, self).get_initial()
         initial['news'] = self.kwargs['pk']
@@ -72,9 +69,6 @@ class ViewNews(DetailView, CreateView):
 
 
 class CreateNews(LoginRequiredMixin, CreateView):
-    # после отправки формы через данный класс, происходит автоматический редирект на созданную новость
-    # в виду того, что ранее в модели был указан методо get_absolute_url()
-    # success_url = '/' - переназначает редирект
     template_name = 'add_news.html'
     login_url = 'home'
     form_class = NewsForm

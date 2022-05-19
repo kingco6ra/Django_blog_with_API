@@ -4,7 +4,6 @@ from django.urls import reverse
 
 
 class News(models.Model):
-    # атрибуты класса
     title = models.CharField(max_length=150, verbose_name='Заголовок')
     author = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=1, related_name='author_news')
     preview_content = models.TextField(max_length=1000, verbose_name='Тизер')
@@ -16,9 +15,6 @@ class News(models.Model):
     category = models.ForeignKey(
         'Category', on_delete=models.PROTECT, verbose_name='Категория', related_name='news_category'
     )
-    # кавычки нужны для того, чтобы завербовать имя отношения.
-    # если бы модель Category была объявлена раньше этой
-    # модели, то ковычки можно было опустить
 
     def get_absolute_url(self):
         return reverse('view_news', kwargs={'pk': self.pk})
@@ -35,8 +31,6 @@ class News(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=150, db_index=True, verbose_name='Категория')
 
-    # функция позволяет использовать абсолютный путь в шаблонах
-    # {{ category.get_absolute_url }}
     def get_absolute_url(self):
         return reverse('category', kwargs={'category_id': self.pk})
 

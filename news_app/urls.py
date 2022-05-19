@@ -9,5 +9,4 @@ urlpatterns = [
     path('news/add-news/', CreateNews.as_view(), name='add_news'),
     path('contact/', contact, name='contact'),
 ]
-# с помощью параметра 'name' ссылку на маршрут можно указывать подобным способом:
-# {% url 'category' category.pk %}
+
