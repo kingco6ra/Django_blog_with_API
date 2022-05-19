@@ -5,6 +5,9 @@
 `cd .\news_blog\`
 #### 3. Launch docker-compose:
 `docker-compose up`
+#### 4. Open a browser and visit 
+`127.0.0.1:8000/`
+#### Done. The API routes will be described below.
 
 ---
 - Python
