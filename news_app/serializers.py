@@ -35,6 +35,7 @@ class NewsSerializer(serializers.ModelSerializer):
 
 
 class CommentsSerializer(serializers.ModelSerializer):
+    author = serializers.HyperlinkedRelatedField(view_name='user-detail', read_only=True)
     news = serializers.HyperlinkedRelatedField(view_name='news-detail', queryset=News.objects.all())
     created_at = serializers.DateTimeField(read_only=True, format='%H:%M:%S %Y-%m-%d')
 
