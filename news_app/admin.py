@@ -17,14 +17,14 @@ class NewsAdminForm(forms.ModelForm):
 class NewsAdmin(admin.ModelAdmin):
     form = NewsAdminForm
     list_display = (
-        'id', 'title', 'category',  # отображаемые поля в админке
+        'id', 'title', 'category', 'author',  # отображаемые поля в админке
         'created_at', 'is_published', 'get_photo')
     list_display_links = ('id', 'title')  # кликабельные поля
     search_fields = ('title', 'content')  # поля по которым можно осуществлять поиск
     list_editable = ('is_published',)  # редактирование в корне новостей
     list_filter = ('is_published', 'category')
     fields = (
-        'title', 'category', 'content', 'preview_content',
+        'title', 'author', 'category', 'content', 'preview_content',
         'photo', 'get_photo', 'created_at',
         'updated_at', 'is_published',
     )
