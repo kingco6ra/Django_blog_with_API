@@ -17,17 +17,16 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-^4(a@+$5jx!9qg_a7-8cjux3tjng!9x*vg2%s(!5rmxz_svy_7'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'django-newsblog.herokuapp.com']
-
 
 # Application definition
 
@@ -38,22 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'news_app.apps.NewsAppConfig',
     'accounts.apps.AccountsConfig',
+
     'debug_toolbar',
-    # кастомизация админки
     'admin_interface',
     'colorfield',
     'ckeditor',
     'ckeditor_uploader',
-    'whitenoise.runserver_nostatic',
     'captcha',
+
     'rest_framework',
     'rest_framework.authtoken',
 
 ]
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-SILENCED_SYSTEM_CHECKS = ["security.W019"]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,7 +63,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'djangorescue.middleware.StaticMediaMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'news_project.urls'
@@ -91,7 +88,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'news_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -101,7 +97,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # DATABASES = {
 #     'default': {
@@ -151,12 +146,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_APP_DIR = 'static'
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'news_project/static')]
 
+# Media files
+
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
@@ -168,7 +168,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-#
 # ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
@@ -244,6 +243,7 @@ CKEDITOR_CONFIGS = {
 # EMAIL_USE_TLS =
 # EMAIL_USE_SSL =
 
+# CAPTCHA
 CAPTCHA_IMAGE_SIZE = (150, 50)
 CAPTCHA_FONT_SIZE = 34
 CAPTCHA_NOISE_FUNCTIONS = None
