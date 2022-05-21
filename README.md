@@ -44,7 +44,93 @@ Password: **admin**
 | api/categories/`id`/                  |     GET `and` PUT     |                             **Only the administrator is allowed.** |Data of the selected category.|
 |                                    |              |                                                                    |
 | api/auth/login/ `AND` api/auth/logout/ | GET `and` POST |                                                 **For all users.** |Login / logout|
+| api/auth-token/ | POST | ** For all users.** | Getting a token.|
 
+# A guide for authorization using a token:
+##### An example will be shown using https://web.postman.co
+#### 1. To get a token, we need to send a POST request with the username and password parameters to the `api/auth-token address/`:
+![изображение](https://user-images.githubusercontent.com/101705791/169644872-fd177ef5-79d0-4c32-999a-8e4d26553432.png)
+#### 2. If you entered the correct data, then you will receive a token from the server in the response column below:
+![изображение](https://user-images.githubusercontent.com/101705791/169644969-a25d6ed5-af29-4330-8f0b-b2adabfc9ffd.png)
+#### 3. To use this token, we must specify it in the "Headers" column in this form:
+![изображение](https://user-images.githubusercontent.com/101705791/169645098-317a4264-2078-4a91-91d3-6ccfa04adc12.png)
+#### 4. To check the functionality of the token, you can send a GET request to the `api/users/`.
+- If everything works correctly, then you will receive a response from the server in this form:
+```
+{
+    "count": 7,
+    "next": "http://127.0.0.1:8000/api/users/?limit=5&offset=5",
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "username": "admin",
+            "email": "admin@example.com",
+            "date_joined": "12:25:22 2022-05-12",
+            "author_news": [
+                "http://127.0.0.1:8000/api/news/6/",
+                "http://127.0.0.1:8000/api/news/5/",
+                "http://127.0.0.1:8000/api/news/4/",
+                "http://127.0.0.1:8000/api/news/3/",
+                "http://127.0.0.1:8000/api/news/2/",
+                "http://127.0.0.1:8000/api/news/1/"
+            ],
+            "author_comments": [
+                "http://127.0.0.1:8000/api/comments/1/"
+            ]
+        },
+        {
+            "id": 2,
+            "username": "testuser",
+            "email": "test@mail.com",
+            "date_joined": "11:34:40 2022-05-15",
+            "author_news": [],
+            "author_comments": [
+                "http://127.0.0.1:8000/api/comments/2/"
+            ]
+        },
+        {
+            "id": 3,
+            "username": "testu34",
+            "email": "test@mail.com",
+            "date_joined": "11:34:45 2022-05-15",
+            "author_news": [],
+            "author_comments": [
+                "http://127.0.0.1:8000/api/comments/4/"
+            ]
+        },
+        {
+            "id": 4,
+            "username": "testuser2",
+            "email": "test@mail.com",
+            "date_joined": "11:34:56 2022-05-15",
+            "author_news": [],
+            "author_comments": []
+        },
+        {
+            "id": 5,
+            "username": "test_user1",
+            "email": "abc@abc.cba",
+            "date_joined": "13:33:00 2022-05-19",
+            "author_news": [],
+            "author_comments": []
+        }
+    ]
+}
+```
+### Possible errors when receiving a token:
+```
+{
+    "detail": "Credentials were not provided."
+}
+```
+- Most likely in this case you forgot to specify the token in "Headers". To solve it, pay your attention once again to step 3.
+```
+{
+    "detail": "Invalid token."
+}
+```
+- You made a mistake when entering the token itself. Please make sure that the input is correct.
 
 ## JSON format for example
 - ### api/news/1
