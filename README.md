@@ -20,7 +20,7 @@ Password: **admin**
 - Django Rest Framework
 - Docker
 
-### API Endpoints:
+# API Endpoints:
 
 
 | URL                                |    METHOD    |                                                        PERMISSIONS |DESCRIPTION|
@@ -44,6 +44,63 @@ Password: **admin**
 | api/categories/`id`/                  |     GET `and` PUT     |                             **Only the administrator is allowed.** |Data of the selected category.|
 |                                    |              |                                                                    |
 | api/auth/login/ `AND` api/auth/logout/ | GET `and` POST |                                                 **For all users.** |Login / logout|
+
+
+## JSON format for example
+- ### api/news/1
+```
+{
+    "id": 1,
+    "author": "http://127.0.0.1:8000/api/users/1/",
+    "category": "http://127.0.0.1:8000/api/categories/1/",
+    "created_at": "12:53:58 2022-05-12",
+    "updated_at": "10:57:41 2022-05-21",
+    "news_comments": [],
+    "title": "Test news publication",
+    "preview_content": "Test text teaser of the publication",
+    "content": "Test content",
+    "photo": null,
+    "is_published": true
+}
+```
+- ### api/comments/1
+```
+{
+    "id": 1,
+    "author": "http://127.0.0.1:8000/api/users/1/",
+    "news": "http://127.0.0.1:8000/api/news/4/",
+    "created_at": "12:55:18 2022-05-12",
+    "content": "Test comment"
+}
+```
+- ### api/categories/1
+```
+{
+    "id": 1,
+    "news_category": [],
+    "title": "Test category"
+}
+```
+- ### api/users/1
+```
+{
+    "id": 1,
+    "username": "admin",
+    "email": "admin@example.com",
+    "date_joined": "12:25:22 2022-05-12",
+    "author_news": [
+        "http://127.0.0.1:8000/api/news/6/",
+        "http://127.0.0.1:8000/api/news/5/",
+        "http://127.0.0.1:8000/api/news/4/",
+        "http://127.0.0.1:8000/api/news/3/",
+        "http://127.0.0.1:8000/api/news/2/",
+        "http://127.0.0.1:8000/api/news/1/"
+    ],
+    "author_comments": [
+        "http://127.0.0.1:8000/api/comments/1/"
+    ]
+}
+```
 
 ### Authorization / Registration
 
