@@ -187,6 +187,7 @@ Password: **admin**
     ]
 }
 ```
+# Screenshots
 
 ### Authorization / Registration
 
