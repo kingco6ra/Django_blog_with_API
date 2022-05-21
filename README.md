@@ -22,6 +22,15 @@ Password: **admin**
 
 # API Endpoints:
 
+### You can also familiarize yourself with all the endpoints using OpenAPI:
+- `http://127.0.0.1:8000/redoc/`
+
+![изображение](https://user-images.githubusercontent.com/101705791/169649716-313fe32c-cc9b-4a76-b04d-48497f4800d8.png)
+
+- `http://127.0.0.1:8000/swagger/`
+
+![изображение](https://user-images.githubusercontent.com/101705791/169649727-c2984aa3-f565-49e6-bfd2-c1030232667e.png)
+
 
 | URL                                |    METHOD    |                                                        PERMISSIONS |DESCRIPTION|
 | :----------------------------------- | :------------: | -------------------------------------------------------------------: | ----|
