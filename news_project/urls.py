@@ -20,6 +20,7 @@ from django.urls import path, include
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from news_app.views import NewsViewSet, CommentsViewSet, UserViewSet, CategoryViewSet
+from .yasg import urlpatterns as doc_urls
 
 # API
 router = routers.DefaultRouter()
@@ -42,6 +43,9 @@ urlpatterns = [
     path('api/auth/', include('rest_framework.urls')),
     path('api/auth-token/', obtain_auth_token)
 ]
+urlpatterns += doc_urls
+
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
