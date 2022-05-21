@@ -23,27 +23,27 @@ Password: **admin**
 ### API Endpoints:
 
 
-| URL                                |    METHOD    |                                                        PERMISSIONS |
-| :----------------------------------- | :------------: | -------------------------------------------------------------------: |
-| api/                               |     GET     |                                                      **API root.** |
+| URL                                |    METHOD    |                                                        PERMISSIONS |DESCRIPTION|
+| :----------------------------------- | :------------: | -------------------------------------------------------------------: | ----|
+| api/                               |     GET     |                                                      **API root.** |API Navigation|
 |                                    |              |                                                                    |
-| api/news/                          |     GET     | **All users are allowed, including those who are not authorized.** |
+| api/news/                          |     GET     | **All users are allowed, including those who are not authorized.** |List of all news with hyper links to the author, category, comments|
 | api/news/                          |     POST     |                             **Only authorized users are allowed.** |
-| api/news/`id`/                        |     PUT     |             **Editing is allowed only to the author of the post.** |
+| api/news/`id`/                        |   GET `and` PUT     |             **Editing is allowed only to the author of the post.** |Data of the selected news publication.|
 |                                    |              |                                                                    |
-| api/comments/                      |     GET     | **All users are allowed, including those who are not authorized.** |
+| api/comments/                      |     GET     | **All users are allowed, including those who are not authorized.** |A list of all comments with hyperlinks to the author and the news post to which the comment has left.|
 | api/comments/                      |     POST     | **All users are allowed, including those who are not authorized.** |
-| api/comments/`id`/                    |     PUT     |          **Editing is allowed only to the author of the comment.** |
+| api/comments/`id`/                    |     GET `and` PUT     |          **Editing is allowed only to the author of the comment.** |Data of the selected comment.|
 |                                    |              |                                                                    |
-| api/users/                         |     GET     |                  **Access is allowed only for the administrator.** |
+| api/users/                         |     GET     |                  **Access is allowed only for the administrator.** |A list of all registered users. All their news publications and all comments.|
 | api/users/                         |     POST     |                  **Access is allowed only for the administrator.** |
-| api/users/`id`/                       |     PUT     |                  **Access is allowed only for the administrator.** |
+| api/users/`id`/                       |     GET `and` PUT     |                  **Access is allowed only for the administrator.** |Data of the selected user.|
 |                                    |              |                                                                    |
-| api/categories/                    |     GET     | **All users are allowed, including those who are not authorized.** |
+| api/categories/                    |     GET     | **All users are allowed, including those who are not authorized.** |List of all categories and hyperlinks to all news with this category.|
 | api/categories/                    |     POST     |                             **Only the administrator is allowed.** |
-| api/categories/`id`/                  |     PUT     |                             **Only the administrator is allowed.** |
+| api/categories/`id`/                  |     GET `and` PUT     |                             **Only the administrator is allowed.** |Data of the selected category.|
 |                                    |              |                                                                    |
-| api/authlogin/ `AND` api/authlogout/ | GET `and` POST |                                                 **For all users.** |
+| api/auth/login/ `AND` api/auth/logout/ | GET `and` POST |                                                 **For all users.** |Login / logout|
 
 ### Authorization / Registration
 
