@@ -18,7 +18,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-
+from rest_framework.authtoken.views import obtain_auth_token
 from news_app.views import NewsViewSet, CommentsViewSet, UserViewSet, CategoryViewSet
 
 # API
@@ -40,6 +40,7 @@ urlpatterns = [
     # API
     path('api/', include(router.urls)),
     path('api/auth/', include('rest_framework.urls')),
+    path('api/auth-token/', obtain_auth_token)
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
