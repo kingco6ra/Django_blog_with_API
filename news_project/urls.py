@@ -39,7 +39,7 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('captcha/', include('captcha.urls')),
     # API
-    path('api/', include(router.urls)),
+    path('api/', include(router.urls), name='api-root'),
     path('api/auth/', include('rest_framework.urls')),
     path('api/auth-token/', obtain_auth_token)
 ]

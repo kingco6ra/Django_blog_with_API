@@ -8,6 +8,9 @@
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'add_news' %}">Добавить новость</a></li>
                 <li class="nav-item float-end"><a href="/admin/" class="nav-link active">Админка</a></li>
             {% endif %}
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'schema-swagger-ui' %}">Swagger</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'schema-redoc' %}">reDoc</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'api-root' %}">API-root</a></li>
         </ul>
 
 
