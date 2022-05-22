@@ -13,12 +13,7 @@
 Login: **admin** <br>
 Password: **admin**
 
-
 ---
-- Python
-- Django
-- Django Rest Framework
-- Docker
 
 # API Endpoints:
 
